@@ -123,9 +123,11 @@ device.on('data', function(data) {
 
   // LANDING GEAR LIGHTS
   if (on(GEAR_DOWN))
-    device.write([0x0, 0x01 | 0x02 | 0x04 ])
+    //device.write([0x0, 0x01 | 0x02 | 0x04 ])
+    device.sendFeatureReport([0x00, 0x01 | 0x02 | 0x04 ])
   else if (on(GEAR_UP))
-    device.write([0x0, 0x08 | 0x10 | 0x20 ])
+    //device.write([0x0, 0x08 | 0x10 | 0x20 ])
+    device.sendFeatureReport([0x00, 0x08 | 0x10 |0x20 ])
 
   // MASTER_BATTERY
   change('master battery', '/controlers/engines/engine/master-bat', on(MASTER_BATTERY))
